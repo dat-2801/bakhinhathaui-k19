@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BookHaven — Nhà sách trực tuyến</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css"></head><body>
+<header class="header"><div class="container nav">
+<a class="brand" href="#" onclick="showHome();return false"><span class="brand-mark">B</span><span>Book<span>Haven</span></span></a>
+<nav><a href="#books" onclick="showHome()">Sách</a><a href="#categories" onclick="showHome()">Thể loại</a><a href="#about" onclick="showHome()">Giới thiệu</a></nav>
+<div class="nav-actions"><button class="icon-btn" onclick="openCart()">🛒 <span id="cartCount">0</span></button><button class="user-btn" id="userBtn" onclick="openAuth()">Đăng nhập</button></div>
+</div></header>
+<main id="homePage">
+<section class="hero"><div class="container hero-grid"><div><p class="eyebrow">BOOKHAVEN · NHÀ SÁCH TRỰC TUYẾN</p>
+<h1>Khám phá những<br><span>cuốn sách đáng đọc.</span></h1><p class="hero-text">Tìm kiếm, xem thông tin sách, đọc tóm tắt và khám phá đánh giá từ độc giả trước khi lựa chọn.</p>
+<a class="primary-btn" href="#books">Khám phá sách →</a></div><div class="hero-card"><div class="hero-book">BOOK<br><span>HAVEN</span></div><p>8 tựa sách được tuyển chọn</p></div></div></section>
+<section class="section" id="books"><div class="container"><div class="section-heading"><div><p class="eyebrow">BỘ SƯU TẬP</p><h2>Sách nổi bật</h2></div><p class="muted">Click vào sách để xem mô tả và đánh giá.</p></div>
+<div class="toolbar"><div class="search-box">🔎 <input id="searchInput" placeholder="Tìm tên sách, tác giả..." oninput="renderBooks()"></div>
+<select id="categoryFilter" onchange="renderBooks()"><option value="">Tất cả thể loại</option></select>
+<select id="sortSelect" onchange="renderBooks()"><option value="default">Sắp xếp</option><option value="priceAsc">Giá thấp → cao</option><option value="priceDesc">Giá cao → thấp</option><option value="name">Tên A → Z</option><option value="rating">Đánh giá cao</option></select></div>
+<div class="book-grid" id="bookGrid"></div></div></section>
+<section class="category-strip" id="categories"><div class="container"><p class="eyebrow">KHÁM PHÁ THEO CHỦ ĐỀ</p><div class="category-pills" id="categoryPills"></div></div></section>
+<section class="about section" id="about"><div class="container about-grid"><div><p class="eyebrow">VỀ BOOKHAVEN</p><h2>Một không gian nhỏ cho những hành trình lớn.</h2></div><p>Website bán sách mô phỏng phục vụ học tập và BTL kiểm thử phần mềm. Luồng chính: xem bìa → chọn sách → xem chi tiết → đọc tóm tắt và đánh giá → thêm vào giỏ hàng.</p></div></section>
+</main>
+<section id="detailPage" class="detail-page hidden"></section>
+<div class="modal hidden" id="authModal"><div class="modal-backdrop" onclick="closeAuth()"></div><div class="modal-card auth-card"><button class="close" onclick="closeAuth()">×</button>
+<div class="auth-logo">B</div><p class="eyebrow">BOOKHAVEN</p><h2>Đăng nhập tài khoản</h2><p class="muted">Đăng nhập để quản lý giỏ hàng và gửi đánh giá.</p>
+<form onsubmit="login(event)"><label>Email<input id="loginEmail" type="email" required placeholder="example@gmail.com"></label><label>Mật khẩu<input id="loginPassword" type="password" required minlength="6" placeholder="••••••••"></label>
+<p id="loginError" class="error"></p><button class="primary-btn full" type="submit">Đăng nhập</button></form>
+<div class="demo-note">Tài khoản demo: <b>demo@bookhaven.vn</b> · Mật khẩu: <b>123456</b></div></div></div>
+<div class="modal hidden" id="cartModal"><div class="modal-backdrop" onclick="closeCart()"></div><div class="modal-card cart-card"><button class="close" onclick="closeCart()">×</button>
+<p class="eyebrow">GIỎ HÀNG</p><h2>Sách bạn đã chọn</h2><div id="cartItems"></div><div class="cart-total"><span>Tổng cộng</span><strong id="cartTotal">0₫</strong></div>
+<button class="primary-btn full" onclick="checkout()">Tiến hành thanh toán</button></div></div>
+<div class="toast" id="toast"></div><footer><div class="container">© 2026 BookHaven · Website mô phỏng phục vụ học tập và kiểm thử phần mềm.</div></footer>
+<script src="js/script.js"></script></body></html>
